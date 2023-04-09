@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Disclaimer</title>
+    <style>
+      body {
+        background-color: #444444;
+        color: #FFA500;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+      }
+      #text {
+        margin-top: 15%;
+        line-height: 1.5em;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #progress-bar {
+        background-color: #aaaaaa;
+        border-radius: 10px;
+        height: 20px;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+      }
+      #progress {
+        background-color: #FFA500;
+        height: 100%;
+        width: 0%;
+		border-radius: 10px;
+        height: 20px;
+        width: 0%;
+        transition: width 1s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="text">
+      Bitte beachten Sie, dass WLAN-RP in keiner Weise mit Rockstar Games oder Take-Two Interactive verbunden ist. Der Serverbetrieb und die Inhalte sind unabhängig von diesen Unternehmen und deren Spielen.
+    </div>
+    <div id="progress-bar">
+      <div id="progress"></div>
+    </div>
+    <script>
+      const text = document.getElementById("text");
+      const words = text.innerHTML.split(" ");
+      text.innerHTML = "";
+      let line = "";
+      for (let i = 0; i < words.length; i++) {
+        line += words[i] + " ";
+        if ((i + 1) % 5 === 0) {
+          text.innerHTML += line.trim() + "<br/>";
+          line = "";
+        }
+      }
+      text.innerHTML += line.trim();
+const progressBar = document.getElementById("progress");
+const maxWidth = document.getElementById("progress-bar").offsetWidth;
+let width = 0;
+progressBar.style.width = width + "px";
+setInterval(function() {
+  if (width >= maxWidth) {
+    return;
+  }
+  width += 1;
+  progressBar.style.width = width + "px";
+}, 10);
+
+	  function hideElements() {
+  const elements = document.querySelectorAll('body > *:not(#background)');
+  elements.forEach(element => {
+    element.style.opacity = 0;
+    element.style.transition = 'opacity 1s ease-in-out';
+  });
+}
+setTimeout(() => {
+  hideElements();
+}, 7000);
+
+    </script>
+  </body>
+</html>
